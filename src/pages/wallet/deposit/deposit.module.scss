@@ -1,0 +1,14 @@
+.main {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+
+.arrow {
+    transform: rotate(180deg);
+    position: absolute;
+    left: 5%;
+    top: 5%;
+}

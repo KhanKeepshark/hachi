@@ -1,0 +1,8 @@
+@import "index.css";
+
+@mixin pixelBorder($size, $color: black) {
+    box-shadow:  (-$size) 0 0 0 $color,
+                 $size 0 0 0 $color,
+                 0 (-$size) 0 0 $color,
+                 0 $size 0 0 $color;
+}

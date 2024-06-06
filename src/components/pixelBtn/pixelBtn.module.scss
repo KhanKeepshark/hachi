@@ -1,0 +1,54 @@
+@use "../../styles.scss";
+
+.btn {
+    @include styles.pixelBorder(5px, #c88149);
+    display: flex;
+    justify-content: center;
+    padding: 5px 10px;
+    font-size: 20px;
+    background-color: #c88149;
+    color: white;
+    gap: 10px;
+    user-select: none;
+    position: relative;
+
+    &:active {
+        transform: translateY(5px);
+        z-index: 10;
+        &::before {
+            display: none;
+        }
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: -10;
+        width: 100%;
+        @include styles.pixelBorder(5px, rgb(148, 72, 1));
+        height: 10px;
+        bottom: -8px;
+        left: 0;
+        background-color: rgb(148, 72, 1);
+        pointer-events: none;
+    }
+
+    &.shop {
+        height: 32px;
+        margin: 10px 0;
+        padding: 0 16px;
+        font-size: 20px;
+        color: black;
+    }
+
+    &.disabled {
+        pointer-events: none;
+        background-color: rgb(232, 182, 136);
+        @include styles.pixelBorder(5px, rgb(232, 182, 136));
+        color: rgb(128, 128, 128);
+        &::before {
+            @include styles.pixelBorder(5px, rgb(212, 158, 107));
+            background-color: rgb(212, 158, 107);
+        }
+    }
+}

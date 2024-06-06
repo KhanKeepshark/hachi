@@ -1,0 +1,60 @@
+@use "../../styles";
+
+.main {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 20px 4%;
+    flex-direction: column;
+}
+
+.walletInfo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+
+  .balance {
+    width: fit-content;
+    padding: 0 5px;
+    margin: 10px;
+    display: flex;
+    gap: 10px;
+    color: white;
+    background-color: black;
+    @include styles.pixelBorder(5px);
+  }
+
+  .walletKey {
+    width: 150px;
+    padding: 0 5px;
+    margin: 10px;
+    color: white;
+    background-color: black;
+    @include styles.pixelBorder(5px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.walletlBtn {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.ton_connect {
+  float: right;
+  background-color: red !important;
+}
+
