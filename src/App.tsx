@@ -1,4 +1,4 @@
-import {Route, Routes, useLocation, useSearchParams} from "react-router-dom";
+import {Route, Routes, useLocation} from "react-router-dom";
 
 
 import Home from "./pages/Home";
