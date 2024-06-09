@@ -9,8 +9,7 @@ import connectWallet from '../../assets/images/connectwallet.png'
 import tonecoinIcon from '../../assets/images/toncoin.png'
 import { Deposit } from './deposit';
 import { Withdraw } from './withdraw';
-// import {useTonAddress, useTonConnectModal, useTonConnectUI, useTonWallet} from "@tonconnect/ui-react";
-import {useTonConnectModal, useTonConnectUI, useTonWallet} from "@tonconnect/ui-react";
+import {useTonAddress, useTonConnectModal, useTonConnectUI, useTonWallet} from "@tonconnect/ui-react";
 import { useStore } from '../../shared/store';
 
 // import {SendTx} from "../SendTx.tsx";
@@ -24,22 +23,19 @@ export const Wallet = () => {
     const [show, setShow] = useState("");
     const { open } = useTonConnectModal()
     const wallet = useTonWallet();
-    // const userFriendlyAddress = useTonAddress();
+    const userFriendlyAddress = useTonAddress();
     const [tonConnectUI] = useTonConnectUI();
     const {userInfo} = useStore();
-    console.log(wallet);
+
     return (
         <BackendTokenContext.Provider value={{token, setToken}}>
             <div className={styles.main}>
-                {true && (
+                {!wallet && (
                     <div className={styles.walletlBtn}>
                         <img src={connectWallet} onClick={() => open()} height={50} alt="connectWallet" />
-                        <div onClick={() => tonConnectUI.disconnect()} >
-                            <img src={closeX} alt="closeX" height={20} />
-                        </div>
                     </div>
                 )}
-                {false && show === "" && (
+                {!!wallet && show === "" && (
                     <>
                         <h1 className='pages-title'>Wallet</h1>
                         <div className={styles.walletInfo}>
@@ -47,12 +43,12 @@ export const Wallet = () => {
                                 {userInfo?.balance}
                                 <img src={tonecoinIcon} height={20} alt="tonecoinIcon" />
                             </div>
-                            {/* <div className='flex-center'>
+                            <div className='flex-center'>
                                 <div className={styles.walletKey}>{userFriendlyAddress}</div>
                                 <div onClick={() => tonConnectUI.disconnect()} >
                                     <img src={closeX} alt="closeX" height={20} />
                                 </div>
-                            </div> */}
+                            </div>
                         </div>
                         <div className={styles.content}>
                             {/* <TonConnectButton style={{position: "absolute", top: "0"}} /> */}
