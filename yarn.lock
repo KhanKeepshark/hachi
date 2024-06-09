@@ -2846,6 +2846,11 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
+telegram-webapps@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/telegram-webapps/-/telegram-webapps-7.2.0.tgz#752a114dec6eb6fb31001002d128df50338b3227"
+  integrity sha512-oo6nmmQXXdoPXfq/g/PhGjAbf5ZbSc2CYzu1owQZXENoxkh6O7RaG7qlZ508vjLWYK8CPKlJvJY5Ja5KvAiLmA==
+
 text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
