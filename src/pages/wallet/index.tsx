@@ -25,7 +25,7 @@ export const Wallet = () => {
     const wallet = useTonWallet();
     const userFriendlyAddress = useTonAddress();
     const [tonConnectUI] = useTonConnectUI();
-    const {userInfo, telegramId} = useStore();
+    const {userInfo} = useStore();
 
     return (
         <BackendTokenContext.Provider value={{token, setToken}}>
@@ -38,7 +38,6 @@ export const Wallet = () => {
                 {!!wallet && show === "" && (
                     <>
                         <h1 className='pages-title'>Wallet</h1>
-                        <div>{"telegramId: " + telegramId}</div>
                         <div className={styles.walletInfo}>
                             <div className={styles.balance}>
                                 {userInfo?.balance}
