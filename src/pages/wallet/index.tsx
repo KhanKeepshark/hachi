@@ -4,13 +4,13 @@ import { BackendTokenContext } from '../../BackendTokenContext';
 import styles from './wallet.module.scss';
 import withdraw from '../../assets/images/withdraw.svg'
 import deposit from '../../assets/images/deposit.svg'
-// import closeX from '../../assets/images/X.svg's
+import closeX from '../../assets/images/X.svg'
 import connectWallet from '../../assets/images/connectwallet.png'
 import tonecoinIcon from '../../assets/images/toncoin.png'
 import { Deposit } from './deposit';
 import { Withdraw } from './withdraw';
 // import {useTonAddress, useTonConnectModal, useTonConnectUI, useTonWallet} from "@tonconnect/ui-react";
-import {useTonConnectModal, useTonWallet} from "@tonconnect/ui-react";
+import {useTonConnectModal, useTonConnectUI, useTonWallet} from "@tonconnect/ui-react";
 import { useStore } from '../../shared/store';
 
 // import {SendTx} from "../SendTx.tsx";
@@ -25,7 +25,7 @@ export const Wallet = () => {
     const { open } = useTonConnectModal()
     const wallet = useTonWallet();
     // const userFriendlyAddress = useTonAddress();
-    // const [tonConnectUI] = useTonConnectUI();
+    const [tonConnectUI] = useTonConnectUI();
     const {userInfo} = useStore();
     console.log(wallet);
     return (
@@ -34,6 +34,9 @@ export const Wallet = () => {
                 {true && (
                     <div className={styles.walletlBtn}>
                         <img src={connectWallet} onClick={() => open()} height={50} alt="connectWallet" />
+                        <div onClick={() => tonConnectUI.disconnect()} >
+                            <img src={closeX} alt="closeX" height={20} />
+                        </div>
                     </div>
                 )}
                 {false && show === "" && (
