@@ -11,15 +11,12 @@ import { authApi } from "./shared/api/auth";
 import { ACCESS_TOKEN_KEY } from "./shared/api/allApi";
 import Shop from "./pages/shop";
 
-const test_id = "543734204"
-// const test_id = "12345678139213"
-
 function App() {
 
-    const {setUserInfo} = useStore()
+    const {setUserInfo, telegramId} = useStore()
     useQuery({
         queryKey: "loginById",
-        queryFn: async () => authApi.loginById(test_id).then((res) => res.data),
+        queryFn: async () => authApi.loginById(telegramId).then((res) => res.data),
         onSuccess: (data) => {
             localStorage.setItem(ACCESS_TOKEN_KEY, data.access_token)
             setUserInfo(data.data)

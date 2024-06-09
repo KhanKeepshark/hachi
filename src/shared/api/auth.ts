@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useStore } from '../store'
 
 export const authClient = axios.create({
   baseURL: "https://hachikogame.uno/api/api/",
@@ -11,12 +12,19 @@ authClient.interceptors.request.use((config) => {
   return config
 })
 
-authClient.interceptors.response.use((res) => res, (error) => {
-    if (error.response.status === 422) {
+authClient.interceptors.response.use((res) => res, async (error) => {
+    const originalRequest = error.config
+    const isIdExist = error.response.data.message === "Telegram ID already exists"
+    if (isIdExist){
+        return Promise.reject(error)
+    }
+    if (error.response.status === 422 && !originalRequest._retry) {
         try {
-            authApi.registerById
+            const telegramId = useStore.getState().telegramId
+            await authApi.registerById(telegramId)
+            return axios(originalRequest)
         } catch (e) {
-            console.log(e)
+            return Promise.reject(e)
         }
     }
     return Promise.reject(error)

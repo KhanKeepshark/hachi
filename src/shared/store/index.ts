@@ -3,6 +3,7 @@ import { persist } from "zustand/middleware"
 import { DogConditionModel, FoodInfoModel, UserInfoModel } from "../dtos/api"
 
 type StoreState = {
+    telegramId: string;
     userInfo: UserInfoModel | null
     dogInfo: DogConditionModel | null
     foodsInfo: FoodInfoModel[] | null
@@ -14,6 +15,7 @@ type StoreState = {
 export const useStore = create<StoreState>()(
     persist(
         (set) => ({
+            telegramId: Telegram.WebApp.initDataUnsafe.user?.id.toString() ?? "null",
             userInfo: null,
             dogInfo: null,
             foodsInfo: null,
