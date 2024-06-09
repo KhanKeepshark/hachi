@@ -8,7 +8,7 @@ import { PixelBtn } from "../../components/pixelBtn";
 import { useStore } from "../../shared/store";
 
 const Shop: FunctionComponent = () => {
-    const {setUserInfo, userInfo} = useStore()
+    const {setUserInfo} = useStore()
 
    const {data, refetch} = useQuery({
         queryKey: "getShopInfo",
