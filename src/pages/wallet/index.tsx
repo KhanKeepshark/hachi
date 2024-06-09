@@ -26,12 +26,9 @@ export const Wallet = () => {
     const userFriendlyAddress = useTonAddress();
     const [tonConnectUI] = useTonConnectUI();
     const {userInfo} = useStore();
-    const tg = Telegram.WebApp
     return (
         <BackendTokenContext.Provider value={{token, setToken}}>
             <div className={styles.main}>
-                <div className={styles.test}>initData {tg.initData}</div>
-                <div className={styles.test}>initData {JSON.stringify(tg.initDataUnsafe)}</div>
                 {!wallet && (
                     <div className={styles.walletlBtn}>
                         <img src={connectWallet} onClick={() => open()} height={50} alt="connectWallet" />
