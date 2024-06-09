@@ -1,4 +1,4 @@
-import {Route, Routes, useLocation} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 
 
 import Home from "./pages/Home";
@@ -17,10 +17,6 @@ const test_id = "543734204"
 function App() {
 
     const {setUserInfo} = useStore()
-    const path = useLocation()
-    const full = window.location.href;
-    console.log(path)
-    console.log("full", full)
     useQuery({
         queryKey: "loginById",
         queryFn: async () => authApi.loginById(test_id).then((res) => res.data),

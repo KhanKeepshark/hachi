@@ -26,9 +26,11 @@ export const Wallet = () => {
     const userFriendlyAddress = useTonAddress();
     const [tonConnectUI] = useTonConnectUI();
     const {userInfo} = useStore();
+    const full = window.location.href;
     return (
         <BackendTokenContext.Provider value={{token, setToken}}>
             <div className={styles.main}>
+                <div className={styles.test}>pathname {full}</div>
                 {!wallet && (
                     <div className={styles.walletlBtn}>
                         <img src={connectWallet} onClick={() => open()} height={50} alt="connectWallet" />

@@ -10,6 +10,11 @@
     flex-direction: column;
 }
 
+.test {
+    width: 300px;
+    overflow-wrap: break-word;
+}
+
 .walletInfo {
   width: 100%;
   display: flex;

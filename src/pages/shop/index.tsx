@@ -33,8 +33,6 @@ const Shop: FunctionComponent = () => {
         },
     })
 
-    console.log(userInfo)
-
     return (
         <div className="pages-content">
             <h2 className="pages-title">SHOP</h2>
