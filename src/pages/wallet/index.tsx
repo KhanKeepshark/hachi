@@ -4,12 +4,13 @@ import { BackendTokenContext } from '../../BackendTokenContext';
 import styles from './wallet.module.scss';
 import withdraw from '../../assets/images/withdraw.svg'
 import deposit from '../../assets/images/deposit.svg'
-import closeX from '../../assets/images/X.svg'
+// import closeX from '../../assets/images/X.svg's
 import connectWallet from '../../assets/images/connectwallet.png'
 import tonecoinIcon from '../../assets/images/toncoin.png'
 import { Deposit } from './deposit';
 import { Withdraw } from './withdraw';
-import {useTonAddress, useTonConnectModal, useTonConnectUI, useTonWallet} from "@tonconnect/ui-react";
+// import {useTonAddress, useTonConnectModal, useTonConnectUI, useTonWallet} from "@tonconnect/ui-react";
+import {useTonConnectModal, useTonWallet} from "@tonconnect/ui-react";
 import { useStore } from '../../shared/store';
 
 // import {SendTx} from "../SendTx.tsx";
@@ -23,8 +24,8 @@ export const Wallet = () => {
     const [show, setShow] = useState("");
     const { open } = useTonConnectModal()
     const wallet = useTonWallet();
-    const userFriendlyAddress = useTonAddress();
-    const [tonConnectUI] = useTonConnectUI();
+    // const userFriendlyAddress = useTonAddress();
+    // const [tonConnectUI] = useTonConnectUI();
     const {userInfo} = useStore();
     return (
         <BackendTokenContext.Provider value={{token, setToken}}>
@@ -42,12 +43,12 @@ export const Wallet = () => {
                                 {userInfo?.balance}
                                 <img src={tonecoinIcon} height={20} alt="tonecoinIcon" />
                             </div>
-                            <div className='flex-center'>
+                            {/* <div className='flex-center'>
                                 <div className={styles.walletKey}>{userFriendlyAddress}</div>
                                 <div onClick={() => tonConnectUI.disconnect()} >
                                     <img src={closeX} alt="closeX" height={20} />
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className={styles.content}>
                             {/* <TonConnectButton style={{position: "absolute", top: "0"}} /> */}

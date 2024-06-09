@@ -15,7 +15,8 @@ authClient.interceptors.request.use((config) => {
 authClient.interceptors.response.use((res) => res, async (error) => {
     const originalRequest = error.config
     const isIdExist = error.response.data.message === "Telegram ID already exists"
-    if (isIdExist){
+    const ifNull = error.response.data.message === "Telegram ID is required"
+    if (isIdExist || ifNull){
         return Promise.reject(error)
     }
     if (error.response.status === 422 && !originalRequest._retry) {
