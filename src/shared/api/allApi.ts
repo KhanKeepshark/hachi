@@ -2,11 +2,11 @@ import axios, { AxiosResponse } from 'axios'
 import { DogConditionModel, FoodInfoModel, ShopInfoModel, UserInfoModel } from '../dtos/api'
 
 export const apiClient = axios.create({
-  baseURL: "http://77.91.75.140/api/",
+  baseURL: "https://hachikogame.uno/api/api/",
 })
 
 export const ACCESS_TOKEN_KEY = 'authToken'
-export const IMAGE_BASE_URL = "http://77.91.75.140/storage/"
+export const IMAGE_BASE_URL = "https://hachikogame.uno/api/storage/"
 
 apiClient.interceptors.request.use((config) => {
     const token = localStorage.getItem(ACCESS_TOKEN_KEY)

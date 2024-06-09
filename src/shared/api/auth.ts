@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const authClient = axios.create({
-  baseURL: "http://77.91.75.140/api/",
+  baseURL: "https://hachikogame.uno/api/api/",
 })
 
 authClient.interceptors.request.use((config) => {
