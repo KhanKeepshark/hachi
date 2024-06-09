@@ -27,15 +27,16 @@ export const Wallet = () => {
     // const userFriendlyAddress = useTonAddress();
     // const [tonConnectUI] = useTonConnectUI();
     const {userInfo} = useStore();
+    console.log(wallet);
     return (
         <BackendTokenContext.Provider value={{token, setToken}}>
             <div className={styles.main}>
-                {!wallet && (
+                {true && (
                     <div className={styles.walletlBtn}>
                         <img src={connectWallet} onClick={() => open()} height={50} alt="connectWallet" />
                     </div>
                 )}
-                {!!wallet && show === "" && (
+                {false && show === "" && (
                     <>
                         <h1 className='pages-title'>Wallet</h1>
                         <div className={styles.walletInfo}>
