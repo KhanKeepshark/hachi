@@ -12,6 +12,10 @@
     user-select: none;
     position: relative;
 
+    button {
+        background-color: transparent;
+    }
+
     &:active {
         transform: translateY(5px);
         z-index: 10;
