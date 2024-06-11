@@ -6,6 +6,7 @@ import { useMutation, useQuery } from "react-query";
 import { allApi, IMAGE_BASE_URL } from "../../shared/api/allApi";
 import { PixelBtn } from "../../components/pixelBtn";
 import { useStore } from "../../shared/store";
+import { floatFormat } from "../../shared/utils";
 
 const Shop: FunctionComponent = () => {
     const {setUserInfo} = useStore()
@@ -42,7 +43,7 @@ const Shop: FunctionComponent = () => {
                     <div className="dog-content">
                         <div className="row dog-shop">
                             <img src={dog1} alt=""/>
-                            <p className="price">{dog.price} ton</p>
+                            <p className="price">{parseFloat(dog.price)} ton</p>
                         </div>
                         <PixelBtn disabled={dog.is_purchased} onClick={() => buyDog(dog.id)} shopBtn btnText="BUY"/>
                     </div>
@@ -50,13 +51,16 @@ const Shop: FunctionComponent = () => {
             )))}
             <div className="food-shop">
                 <h5 className="shop-subtitle">Foods</h5>
-                {data?.foods.map((food => (
-                    <div key={food.id} className="food-item">
-                        <img src={IMAGE_BASE_URL + food.image_url} alt=""/>
-                        <div className="price">{food.price} ton &gt; {food.income_price} ton</div>
-                        <PixelBtn disabled={!food.is_consumed} onClick={() => buyFood(food.id)} shopBtn btnText="BUY"/>
-                    </div>
-                )))}
+                {data?.foods.map((food => {
+                    const finalsum = floatFormat(parseFloat(food.price) * parseFloat(food.income_price))
+                    return (
+                        <div key={food.id} className="food-item">
+                            <img src={IMAGE_BASE_URL + food.image_url} alt=""/>
+                            <div className="price">{floatFormat(food.price)} ton &gt; {finalsum} ton</div>
+                            <PixelBtn disabled={!food.is_consumed} onClick={() => buyFood(food.id)} shopBtn btnText="BUY"/>
+                        </div>
+                    )
+                }))}
             </div>
         </div>
     );
