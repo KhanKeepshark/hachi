@@ -7,6 +7,7 @@ import { allApi, IMAGE_BASE_URL } from "../../shared/api/allApi";
 import { PixelBtn } from "../../components/pixelBtn";
 import { useStore } from "../../shared/store";
 import { floatFormat } from "../../shared/utils";
+import toast from "react-hot-toast";
 
 const Shop: FunctionComponent = () => {
     const {setUserInfo} = useStore()
@@ -21,8 +22,12 @@ const Shop: FunctionComponent = () => {
         mutationFn: async (dog_id: number) => allApi.buyDog(dog_id).then((res) => res.data),
         onSuccess: (data) => {
             setUserInfo(data.data)
+            toast.success("The dog was successfully purchased")
             refetch()
         },
+        onError: (error: any) => {
+            toast.error(error.response.data.error)
+        }
     })
 
     const {mutate: buyFood} = useMutation({
@@ -30,8 +35,12 @@ const Shop: FunctionComponent = () => {
         mutationFn: async (food_id: number) => allApi.buyFood(food_id).then((res) => res.data),
         onSuccess: (data) => {
             setUserInfo(data.data)
+            toast.success("The food was successfully purchased")
             refetch()
         },
+        onError: (error: any) => {
+            toast.error(error.response.data.error)
+        }
     })
 
     return (
