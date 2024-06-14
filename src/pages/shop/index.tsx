@@ -10,7 +10,7 @@ import { floatFormat } from "../../shared/utils";
 import toast from "react-hot-toast";
 
 const Shop: FunctionComponent = () => {
-    const {setUserInfo} = useStore()
+    const {setUserInfo, setDogInfo} = useStore()
 
    const {data, refetch} = useQuery({
         queryKey: "getShopInfo",
@@ -22,6 +22,7 @@ const Shop: FunctionComponent = () => {
         mutationFn: async (dog_id: number) => allApi.buyDog(dog_id).then((res) => res.data),
         onSuccess: (data) => {
             setUserInfo(data.data)
+            setDogInfo(data.dog)
             toast.success("The dog was successfully purchased")
             refetch()
         },
