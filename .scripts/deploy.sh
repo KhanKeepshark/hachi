@@ -7,8 +7,10 @@ echo "Deployment started ..."
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# Use a specific Node version
-nvm use 18
+# Check and use the correct Node version
+if [[ $(node -v) != v18* ]]; then
+  nvm use 18
+fi
 
 # Stash any local changes
 git stash --include-untracked
