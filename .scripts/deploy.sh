@@ -6,6 +6,8 @@ echo "Deployment started ..."
 # Pull the latest version of the app
 git pull origin main
 
+nvm use 18
+
 # Install npm dependencies
 npm install
 
